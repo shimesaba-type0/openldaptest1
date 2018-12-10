@@ -1,0 +1,21 @@
+- hosts: all
+  remote_user: root
+
+  tasks:
+    - name: Test connection
+      ping:
+      remote_user: username
+      register: result
+    - name: debug result ver
+      degub: var=result
+      #     - name: Install OpenLDAP
+      #       yum:
+      #           name: openldap-servers, openldap-clients
+      #           state: latest
+      #     - name: Start slapd
+      #       service:
+      #           name: slapd
+      #           state: started
+
+
+
