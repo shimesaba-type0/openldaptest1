@@ -2,12 +2,14 @@
   remote_user: root
 
   tasks:
-    - name: Test connection
-      ping:
-      remote_user: username
+    - name: echo username
+      command: cat /etc/shadow
+      become: yes
       register: result
+
     - name: debug result ver
-      degub: var=result
+      debug: var=result
+
       #     - name: Install OpenLDAP
       #       yum:
       #           name: openldap-servers, openldap-clients
