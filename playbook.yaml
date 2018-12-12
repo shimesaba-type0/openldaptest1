@@ -2,22 +2,31 @@
   remote_user: root
 
   tasks:
-    - name: echo username
-      command: cat /etc/shadow
-      become: yes
+    - name: get os version
+      command: cat /etc/redhat-release
+      # become: yes
       register: result
-
     - name: debug result ver
       debug: var=result
 
-      #     - name: Install OpenLDAP
-      #       yum:
-      #           name: openldap-servers, openldap-clients
-      #           state: latest
-      #     - name: Start slapd
-      #       service:
-      #           name: slapd
-      #           state: started
+    - name: get karnel information
+      command: uname -a
+      register: result
+    - name: debug result ver
+      debug: var=result
+
+    - name: Install OpenLDAP servers and clients
+      yum:
+          name: "{{ packages }}"
+          state: latest
+      vars:
+          packages:
+              - openldap-servers
+              - openldap-clients
+      become: yes
+      register: result
+    - name: display package install
+      debug: var=result
 
 
 
