@@ -28,5 +28,15 @@
     - name: display package install
       debug: var=result
 
+    - name: start slapd (OpenLDAP)
+      systemd:
+          name: slapd
+          state: started
+      become: yes
+      register: result
+    - name: display slapd start result
+      debug: var=result
+
+
 
 
