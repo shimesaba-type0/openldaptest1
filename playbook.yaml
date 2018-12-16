@@ -7,13 +7,15 @@
       # become: yes
       register: result
     - name: debug result ver
-      debug: var=result
+      debug:
+        msg: "{{ result.stdout }}"
 
     - name: get karnel information
       command: uname -a
       register: result
     - name: debug result ver
-      debug: var=result
+      debug:
+        msg: "{{ result.stdout }}"
 
     - name: Install OpenLDAP servers and clients
       yum:
@@ -26,7 +28,8 @@
       become: yes
       register: result
     - name: display package install
-      debug: var=result
+      debug:
+        var: result
 
     - name: start slapd (OpenLDAP)
       systemd:
@@ -35,8 +38,42 @@
       become: yes
       register: result
     - name: display slapd start result
-      debug: var=result
+      debug:
+        var: result
 
+    - name: enable slapd (OpenLDAP)
+      systemd:
+          name: slapd
+          state: started
+          enabled: yes
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
 
+    - name: check openldap default configuration SASL=EXTERNAL
+      command: ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b cn=config dn
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
+
+    - name: check openldap default cn=config dn
+      command: ldapsearch -LLL -H ldapi:/// -b cn=config dn
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
+
+    - name: check base tree cn=config only
+      command: ldapsearch -LLL -H ldapi:/// -b cn=config -s base
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
 
 
