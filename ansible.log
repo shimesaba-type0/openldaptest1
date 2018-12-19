@@ -490,3 +490,122 @@
 }
 2018-12-17 08:48:48,525 p=49954 u=Shimesaba |  PLAY RECAP *********************************************************************
 2018-12-17 08:48:48,525 p=49954 u=Shimesaba |  default                    : ok=17   changed=5    unreachable=0    failed=0   
+2018-12-20 08:34:51,804 p=60421 u=Shimesaba |  PLAY [all] **********************************************************************************************************************************
+2018-12-20 08:34:51,835 p=60421 u=Shimesaba |  TASK [Gathering Facts] **********************************************************************************************************************
+2018-12-20 08:34:57,814 p=60421 u=Shimesaba |  ok: [default]
+2018-12-20 08:34:57,866 p=60421 u=Shimesaba |  TASK [display frontend database] ************************************************************************************************************
+2018-12-20 08:34:58,781 p=60421 u=Shimesaba |  changed: [default]
+2018-12-20 08:34:58,827 p=60421 u=Shimesaba |  TASK [display result] ***********************************************************************************************************************
+2018-12-20 08:34:59,017 p=60421 u=Shimesaba |  ok: [default] => {
+    "result": {
+        "changed": true,
+        "cmd": [
+            "ldapsearch",
+            "-LLL",
+            "-H",
+            "ldapi:///",
+            "-b",
+            "olcDatabase={-1}frontend,cn=config"
+        ],
+        "delta": "0:00:00.025041",
+        "end": "2018-12-17 01:30:50.784223",
+        "failed": false,
+        "rc": 0,
+        "start": "2018-12-17 01:30:50.759182",
+        "stderr": "SASL/EXTERNAL authentication started\nSASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth\nSASL SSF: 0",
+        "stderr_lines": [
+            "SASL/EXTERNAL authentication started",
+            "SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth",
+            "SASL SSF: 0"
+        ],
+        "stdout": "dn: olcDatabase={-1}frontend,cn=config\nobjectClass: olcDatabaseConfig\nobjectClass: olcFrontendConfig\nolcDatabase: {-1}frontend",
+        "stdout_lines": [
+            "dn: olcDatabase={-1}frontend,cn=config",
+            "objectClass: olcDatabaseConfig",
+            "objectClass: olcFrontendConfig",
+            "olcDatabase: {-1}frontend"
+        ]
+    }
+}
+2018-12-20 08:34:59,021 p=60421 u=Shimesaba |  PLAY RECAP **********************************************************************************************************************************
+2018-12-20 08:34:59,021 p=60421 u=Shimesaba |  default                    : ok=3    changed=1    unreachable=0    failed=0   
+2018-12-20 08:43:01,973 p=60586 u=Shimesaba |  PLAY [all] **********************************************************************************************************************************
+2018-12-20 08:43:01,998 p=60586 u=Shimesaba |  TASK [Gathering Facts] **********************************************************************************************************************
+2018-12-20 08:43:04,598 p=60586 u=Shimesaba |  ok: [default]
+2018-12-20 08:43:04,644 p=60586 u=Shimesaba |  TASK [display config database] **************************************************************************************************************
+2018-12-20 08:43:05,537 p=60586 u=Shimesaba |  changed: [default]
+2018-12-20 08:43:05,569 p=60586 u=Shimesaba |  TASK [display result] ***********************************************************************************************************************
+2018-12-20 08:43:05,820 p=60586 u=Shimesaba |  ok: [default] => {
+    "result": {
+        "changed": true,
+        "cmd": [
+            "ldapsearch",
+            "-LLL",
+            "-H",
+            "ldapi:///",
+            "-b",
+            "olcDatabase={0}config,cn=config"
+        ],
+        "delta": "0:00:00.023660",
+        "end": "2018-12-17 01:39:38.098043",
+        "failed": false,
+        "rc": 0,
+        "start": "2018-12-17 01:39:38.074383",
+        "stderr": "SASL/EXTERNAL authentication started\nSASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth\nSASL SSF: 0",
+        "stderr_lines": [
+            "SASL/EXTERNAL authentication started",
+            "SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth",
+            "SASL SSF: 0"
+        ],
+        "stdout": "dn: olcDatabase={0}config,cn=config\nobjectClass: olcDatabaseConfig\nolcDatabase: {0}config\nolcAccess: {0}to * by dn.base=\"gidNumber=0+uidNumber=0,cn=peercred,cn=external\n ,cn=auth\" manage by * none",
+        "stdout_lines": [
+            "dn: olcDatabase={0}config,cn=config",
+            "objectClass: olcDatabaseConfig",
+            "olcDatabase: {0}config",
+            "olcAccess: {0}to * by dn.base=\"gidNumber=0+uidNumber=0,cn=peercred,cn=external",
+            " ,cn=auth\" manage by * none"
+        ]
+    }
+}
+2018-12-20 08:43:05,823 p=60586 u=Shimesaba |  PLAY RECAP **********************************************************************************************************************************
+2018-12-20 08:43:05,823 p=60586 u=Shimesaba |  default                    : ok=3    changed=1    unreachable=0    failed=0   
+2018-12-20 08:47:02,815 p=60669 u=Shimesaba |  PLAY [all] **********************************************************************************************************************************
+2018-12-20 08:47:02,848 p=60669 u=Shimesaba |  TASK [Gathering Facts] **********************************************************************************************************************
+2018-12-20 08:47:05,422 p=60669 u=Shimesaba |  ok: [default]
+2018-12-20 08:47:05,482 p=60669 u=Shimesaba |  TASK [display monitor database] *************************************************************************************************************
+2018-12-20 08:47:06,631 p=60669 u=Shimesaba |  changed: [default]
+2018-12-20 08:47:06,664 p=60669 u=Shimesaba |  TASK [display result] ***********************************************************************************************************************
+2018-12-20 08:47:06,851 p=60669 u=Shimesaba |  ok: [default] => {
+    "result": {
+        "changed": true,
+        "cmd": [
+            "ldapsearch",
+            "-LLL",
+            "-H",
+            "ldapi:///",
+            "-b",
+            "olcDatabase={1}monitor,cn=config"
+        ],
+        "delta": "0:00:00.028408",
+        "end": "2018-12-17 01:43:59.282880",
+        "failed": false,
+        "rc": 0,
+        "start": "2018-12-17 01:43:59.254472",
+        "stderr": "SASL/EXTERNAL authentication started\nSASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth\nSASL SSF: 0",
+        "stderr_lines": [
+            "SASL/EXTERNAL authentication started",
+            "SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth",
+            "SASL SSF: 0"
+        ],
+        "stdout": "dn: olcDatabase={1}monitor,cn=config\nobjectClass: olcDatabaseConfig\nolcDatabase: {1}monitor\nolcAccess: {0}to * by dn.base=\"gidNumber=0+uidNumber=0,cn=peercred,cn=external\n ,cn=auth\" read by dn.base=\"cn=Manager,dc=my-domain,dc=com\" read by * none",
+        "stdout_lines": [
+            "dn: olcDatabase={1}monitor,cn=config",
+            "objectClass: olcDatabaseConfig",
+            "olcDatabase: {1}monitor",
+            "olcAccess: {0}to * by dn.base=\"gidNumber=0+uidNumber=0,cn=peercred,cn=external",
+            " ,cn=auth\" read by dn.base=\"cn=Manager,dc=my-domain,dc=com\" read by * none"
+        ]
+    }
+}
+2018-12-20 08:47:06,855 p=60669 u=Shimesaba |  PLAY RECAP **********************************************************************************************************************************
+2018-12-20 08:47:06,855 p=60669 u=Shimesaba |  default                    : ok=3    changed=1    unreachable=0    failed=0   

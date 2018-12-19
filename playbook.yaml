@@ -76,4 +76,38 @@
       debug:
           var: result
 
+    # 暗黙のデータベース。デフォルトでは何のパラメータも設定されていない。
+    - name: display frontend database
+      command: ldapsearch -LLL -H ldapi:/// -b olcDatabase={-1}frontend,cn=config
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
+
+    # config database
+    # OpenLDAP サーバのコンフィグを行うためのデータベース
+    # グローバルセクションに該当する
+    # 初期値では、OpenLDAP をインストールした root ユーザが
+    # ldapi 接続を行った際に manage 権限を与える設定のみがある
+    - name: display config database
+      command: ldapsearch -LLL -H ldapi:/// -b olcDatabase={0}config,cn=config
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
+
+    # monitor database
+    # LDAPの動作状況を確認するための database
+    # デフォルトではインストールした root ユーザだけが manage 権限を持つ
+    - name: display monitor database
+      command: ldapsearch -LLL -H ldapi:/// -b olcDatabase={1}monitor,cn=config
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
+
+
 
