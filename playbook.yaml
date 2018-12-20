@@ -109,5 +109,38 @@
       debug:
           var: result
 
+    # 実際にLDAPサーバとして利用するツリーの定義
+    - name: display actual default database
+      command: ldapsearch -LLL -H ldapi:/// -b olcDatabase={2}hdb,cn=config
+      become: yes
+      register: result
+    - name: display result
+      debug:
+          var: result
 
+
+    ### データベースの作成
+    # まず止める
+    - name: stop slapd (OpenLDAP) before database setting
+      systemd:
+          name: slapd
+          state: stopped
+      become: yes
+      register: result
+    - name: display slapd satus
+      debug:
+        var: result
+
+    # ファイルを消す
+    # [vagrant@localhost ~]$ sudo ls /etc/openldap/slapd.d/cn=config
+    # cn=schema  cn=schema.ldif  olcDatabase={-1}frontend.ldif  olcDatabase={0}config.ldif  olcDatabase={1}monitor.ldif  olcDatabase={2}hdb.ldif
+    - name: remove configuration file
+      file:
+          path: /etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif
+          state: absent
+      become: yes
+      register: result
+    - name: remove configration file result
+      debug:
+          var: result
 
